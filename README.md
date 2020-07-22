@@ -548,7 +548,7 @@ plt.show()
 ```
 
 
-![png](lendingclub-loan-risk-neural-network_files/lendingclub-loan-risk-neural-network_25_0.png)
+![png](images/lendingclub-loan-risk-neural-network_25_0.png)
 
 
 Now that the output is formatted, it's time to clean up the inputs. I'll check the null counts of each variable.
@@ -2068,7 +2068,7 @@ plt.show()
 ```
 
 
-![png](lendingclub-loan-risk-neural-network_files/lendingclub-loan-risk-neural-network_77_0.png)
+![png](images/lendingclub-loan-risk-neural-network_77_0.png)
 
 
 ## Saving the final model

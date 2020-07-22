@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- prettier-ignore -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="https://cdn.glitch.com/e1c8387f-9c1d-4683-84b5-32c40c510abd%2Ffavicon.ico?v=1579979902340" type="image/x-icon" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/default.min.css" />
+
+    <title>Neural Network Loan Risk Prediction API – Ty Mick</title>
+  </head>
+
+  <body style="background-color: #dee2e6;">
+    <div class="container-md my-5">
+      <h1 class="mb-3">Neural Network Loan Risk Prediction API</h1>
+
+      <div class="text-center">
+        <a class="btn btn-info mb-2" href="#submit-button" role="button">
+          Jump to the bottom of the form
+        </a>
+      </div>
+
+      <!-- API test front end -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="h5">
+            Test this API:
+          </div>
+          <div class="h6 mb-3 text-muted">
+            (Prefilled with median numeric values and most common categorical
+            values)
+          </div>
+
+          <form id="apiTest" class="mb-4">
+            <div class="form-group">
+              <label for="loan_amnt">Loan amount</label>
+              <input
+                id="loan_amnt"
+                name="loan_amnt"
+                class="form-control"
+                type="number"
+                value="12800"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="term">Term</label>
+              <select id="term" name="term" class="form-control" required>
+                <option selected>36 months</option>
+                <option>60 months</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="emp_length">Length of employment</label>
+              <select
+                id="emp_length"
+                name="emp_length"
+                class="form-control"
+                required
+              >
+                <option value="< 1 year">&lt; 1 year</option>
+                <option>1 year</option>
+                <option>2 years</option>
+                <option>3 years</option>
+                <option>4 years</option>
+                <option>5 years</option>
+                <option>6 years</option>
+                <option>7 years</option>
+                <option>8 years</option>
+                <option>9 years</option>
+                <option selected>10+ years</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="home_ownership">Home onwership</label>
+              <select
+                id="home_ownership"
+                name="home_ownership"
+                class="form-control"
+              >
+                <option value="RENT">Rent</option>
+                <option value="MORTGAGE" selected>Mortgage</option>
+                <option value="OWN">Own</option>
+                <option value="ANY">Any</option>
+                <option value="NONE">None</option>
+                <option value="OTHER">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="annual_inc">Annual income</label>
+              <input
+                id="annual_inc"
+                name="annual_inc"
+                class="form-control"
+                type="number"
+                value="67000"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="purpose">Loan purpose</label>
+              <select id="purpose" name="purpose" class="form-control" required>
+                <option value="car">Car</option>
+                <option value="credit_card">Credit card</option>
+                <option value="debt_consolidation" selected
+                  >Debt consolidation</option
+                >
+                <option value="educational">Educational</option>
+                <option value="home_improvement">Home improvement</option>
+                <option value="house">House</option>
+                <option value="major_purchase">Major purchase</option>
+                <option value="medical">Medical</option>
+                <option value="moving">Moving</option>
+                <option value="renewable_energy">Renewable energy</option>
+                <option value="small_business">Small business</option>
+                <option value="vacation">Vacation</option>
+                <option value="wedding">Wedding</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="dti">Debt-to-income ratio</label>
+              <input
+                id="dti"
+                name="dti"
+                class="form-control"
+                type="number"
+                step="0.1"
+                value="17.9"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="delinq_2yrs"
+                >Number of delinquencies in the past two years</label
+              >
+              <input
+                id="delinq_2yrs"
+                name="delinq_2yrs"
+                class="form-control"
+                type="number"
+                value="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="cr_hist_age_mths"
+                >Age of earliest credit line in months</label
+              >
+              <input
+                id="cr_hist_age_mths"
+                name="cr_hist_age_mths"
+                class="form-control"
+                type="number"
+                value="176"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="fico_range_low">FICO range (low)</label>
+              <input
+                id="fico_range_low"
+                name="fico_range_low"
+                class="form-control"
+                type="number"
+                value="690"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="fico_range_high">FICO range (high)</label>
+              <input
+                id="fico_range_high"
+                name="fico_range_high"
+                class="form-control"
+                type="number"
+                value="694"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="inq_last_6mths"
+                >Number of inquiries in the last six months</label
+              >
+              <input
+                id="inq_last_6mths"
+                name="inq_last_6mths"
+                class="form-control"
+                type="number"
+                value="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="inv_mths_since_last_delinq"
+                >Months since last delinquency</label
+              >
+              <input
+                id="inv_mths_since_last_delinq"
+                name="inv_mths_since_last_delinq"
+                class="form-control"
+                type="text"
+                value="78"
+                aria-describedby="inv_mths_since_last_delinq_help"
+                required
+              />
+              <small
+                id="inv_mths_since_last_delinq_help"
+                class="form-text text-muted"
+              >
+                Enter a number or "N/A"
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label for="inv_mths_since_last_record"
+                >Months since last public record</label
+              >
+              <input
+                id="inv_mths_since_last_record"
+                name="inv_mths_since_last_record"
+                class="form-control"
+                type="text"
+                value="N/A"
+                aria-describedby="inv_mths_since_last_record_help"
+                required
+              />
+              <small
+                id="inv_mths_since_last_record_help"
+                class="form-text text-muted"
+              >
+                Enter a number or "N/A"
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label for="open_acc">Number of open credit lines</label>
+              <input
+                id="open_acc"
+                name="open_acc"
+                class="form-control"
+                type="number"
+                value="11"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="pub_rec">Number of derogatory public records</label>
+              <input
+                id="pub_rec"
+                name="pub_rec"
+                class="form-control"
+                type="number"
+                value="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="revol_bal"
+                >Total balance of revolving credit lines</label
+              >
+              <input
+                id="revol_bal"
+                name="revol_bal"
+                class="form-control"
+                type="number"
+                value="11484"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="revol_util">Revolving line utilization rate</label>
+              <input
+                id="revol_util"
+                name="revol_util"
+                class="form-control"
+                type="number"
+                step="0.1"
+                value="52.1"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="total_acc"
+                >Total number of credit lines in credit file</label
+              >
+              <input
+                id="total_acc"
+                name="total_acc"
+                class="form-control"
+                type="number"
+                value="24"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="collections_12_mths_ex_med"
+                >Number of collections in the last 12 months (excluding
+                medical)</label
+              >
+              <input
+                id="collections_12_mths_ex_med"
+                name="collections_12_mths_ex_med"
+                class="form-control"
+                type="number"
+                value="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="inv_mths_since_last_major_derog"
+                >Months since last 90-day or worse rating</label
+              >
+              <input
+                id="inv_mths_since_last_major_derog"
+                name="inv_mths_since_last_major_derog"
+                class="form-control"
+                type="text"
+                value="N/A"
+                aria-describedby="inv_mths_since_last_major_derog_help"
+                required
+              />
+              <small
+                id="inv_mths_since_last_major_derog_help"
+                class="form-text text-muted"
+              >
+                Enter a number or "N/A"
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label for="application_type">Application type</label>
+              <select
+                id="application_type"
+                name="application_type"
+                class="form-control"
+                required
+              >
+                <option selected>Individual</option>
+                <option>Joint App</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="annual_inc_joint"
+                >Combined annual income of co-borrowers</label
+              >
+              <input
+                id="annual_inc_joint"
+                name="annual_inc_joint"
+                class="form-control"
+                type="text"
+                value="N/A"
+                aria-describedby="annual_inc_joint_help"
+                required
+              />
+              <small id="annual_inc_joint_help" class="form-text text-muted">
+                Enter a number or "N/A"
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label for="dti_joint"
+                >Combined debt-to-income ratio of co-borrowers</label
+              >
+              <input
+                id="dti_joint"
+                name="dti_joint"
+                class="form-control"
+                type="text"
+                value="N/A"
+                aria-describedby="dti_joint_help"
+                required
+              />
+              <small id="dti_joint_help" class="form-text text-muted">
+                Enter a number or "N/A"
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label for="acc_now_delinq"
+                >Number of accounts now delinquent</label
+              >
+              <input
+                id="acc_now_delinq"
+                name="acc_now_delinq"
+                class="form-control"
+                type="number"
+                value="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="tot_coll_amt"
+                >Total collection amounts ever owed</label
+              >
+              <input
+                id="tot_coll_amt"
+                name="tot_coll_amt"
+                class="form-control"
+                type="number"
+                value="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="tot_cur_bal"
+                >Total current balance of all accounts</label
+              >
+              <input
+                id="tot_cur_bal"
+                name="tot_cur_bal"
+                class="form-control"
+                type="number"
+                value="87095"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="total_rev_hi_lim">Total revolving credit limit</label>
+              <input
+                id="total_rev_hi_lim"
+                name="total_rev_hi_lim"
+                class="form-control"
+                type="number"
+                value="24600"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="acc_open_past_24mths"
+                >Number of trades opened in the past 24 months</label
+              >
+              <input
+                id="acc_open_past_24mths"
+                name="acc_open_past_24mths"
+                class="form-control"
+                type="number"
+                value="4"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="avg_cur_bal"
+                >Average current balance of all accounts</label
+              >
+              <input
+                id="avg_cur_bal"
+                name="avg_cur_bal"
+                class="form-control"
+                type="number"
+                value="7824"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="bc_open_to_buy">Total open to buy on bankcards</label>
+              <input
+                id="bc_open_to_buy"
+                name="bc_open_to_buy"
+                class="form-control"
+                type="number"
+                value="4878"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="bc_util">Bankcard credit utilization rate</label>
+              <input
+                id="bc_util"
+                name="bc_util"
+                class="form-control"
+                type="number"
+                step="0.1"
+                value="63.0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="chargeoff_within_12_mths"
+                >Number of charge-offs in the last 12 months</label
+              >
+              <input
+                id="chargeoff_within_12_mths"
+                name="chargeoff_within_12_mths"
+                class="form-control"
+                type="number"
+                value="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="delinq_amnt"
+                >Past-due amount owed on which currently delinquent</label
+              >
+              <input
+                id="delinq_amnt"
+                name="delinq_amnt"
+                class="form-control"
+                type="number"
+                value="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="mo_sin_old_il_acct"
+                >Months since oldest bank installment account opened</label
+              >
+              <input
+                id="mo_sin_old_il_acct"
+                name="mo_sin_old_il_acct"
+                class="form-control"
+                type="number"
+                value="129"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="mo_sin_old_rev_tl_op"
+                >Months since oldest revolving account opened</label
+              >
+              <input
+                id="mo_sin_old_rev_tl_op"
+                name="mo_sin_old_rev_tl_op"
+                class="form-control"
+                type="number"
+                value="161"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="inv_mo_sin_rcnt_rev_tl_op"
+                >Months since most recent revolving account opened</label
+              >
+              <input
+                id="inv_mo_sin_rcnt_rev_tl_op"
+                name="inv_mo_sin_rcnt_rev_tl_op"
+                class="form-control"
+                type="text"
+                value="8"
+                aria-describedby="inv_mo_sin_rcnt_rev_tl_op_help"
+                required
+              />
+              <small
+                id="inv_mo_sin_rcnt_rev_tl_op_help"
+                class="form-text text-muted"
+              >
+                Enter a number or "N/A"
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label for="inv_mo_sin_rcnt_tl"
+                >Months since most recent account opened</label
+              >
+              <input
+                id="inv_mo_sin_rcnt_tl"
+                name="inv_mo_sin_rcnt_tl"
+                class="form-control"
+                type="text"
+                value="5"
+                aria-describedby="inv_mo_sin_rcnt_tl_help"
+                required
+              />
+              <small id="inv_mo_sin_rcnt_tl_help" class="form-text text-muted">
+                Enter a number or "N/A"
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label for="mort_acc">Number of mortgage accounts</label>
+              <input
+                id="mort_acc"
+                name="mort_acc"
+                class="form-control"
+                type="number"
+                value="1"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="inv_mths_since_recent_bc"
+                >Months since most recent bankcard account opened</label
+              >
+              <input
+                id="inv_mths_since_recent_bc"
+                name="inv_mths_since_recent_bc"
+                class="form-control"
+                type="text"
+                value="14"
+                aria-describedby="inv_mths_since_recent_bc_help"
+                required
+              />
+              <small
+                id="inv_mths_since_recent_bc_help"
+                class="form-text text-muted"
+              >
+                Enter a number or "N/A"
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label for="inv_mths_since_recent_bc_dlq"
+                >Months since most recent bankcard delinquency</label
+              >
+              <input
+                id="inv_mths_since_recent_bc_dlq"
+                name="inv_mths_since_recent_bc_dlq"
+                class="form-control"
+                type="text"
+                value="N/A"
+                aria-describedby="inv_mths_since_recent_bc_dlq_help"
+                required
+              />
+              <small
+                id="inv_mths_since_recent_bc_dlq_help"
+                class="form-text text-muted"
+              >
+                Enter a number or "N/A"
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label for="inv_mths_since_recent_inq"
+                >Months since most recent inquiry</label
+              >
+              <input
+                id="inv_mths_since_recent_inq"
+                name="inv_mths_since_recent_inq"
+                class="form-control"
+                type="text"
+                value="6"
+                aria-describedby="inv_mths_since_recent_inq_help"
+                required
+              />
+              <small
+                id="inv_mths_since_recent_inq_help"
+                class="form-text text-muted"
+              >
+                Enter a number or "N/A"
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label for="inv_mths_since_recent_revol_delinq"
+                >Months since most recent revolving delinquency</label
+              >
+              <input
+                id="inv_mths_since_recent_revol_delinq"
+                name="inv_mths_since_recent_revol_delinq"
+                class="form-control"
+                type="text"
+                value="N/A"
+                aria-describedby="inv_mths_since_recent_revol_delinq_help"
+                required
+              />
+              <small
+                id="inv_mths_since_recent_revol_delinq_help"
+                class="form-text text-muted"
+              >
+                Enter a number or "N/A"
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label for="num_accts_ever_120_pd"
+                >Number of accounts ever 120 or more days past due</label
+              >
+              <input
+                id="num_accts_ever_120_pd"
+                name="num_accts_ever_120_pd"
+                class="form-control"
+                type="number"
+                value="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="num_actv_bc_tl"
+                >Number of active bankcard accounts</label
+              >
+              <input
+                id="num_actv_bc_tl"
+                name="num_actv_bc_tl"
+                class="form-control"
+                type="number"
+                value="3"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="num_actv_rev_tl"
+                >Number of active revolving trades</label
+              >
+              <input
+                id="num_actv_rev_tl"
+                name="num_actv_rev_tl"
+                class="form-control"
+                type="number"
+                value="5"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="num_bc_sats"
+                >Number of satisfactory bankcard accounts</label
+              >
+              <input
+                id="num_bc_sats"
+                name="num_bc_sats"
+                class="form-control"
+                type="number"
+                value="4"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="num_bc_tl">Total number of bankcard accounts</label>
+              <input
+                id="num_bc_tl"
+                name="num_bc_tl"
+                class="form-control"
+                type="number"
+                value="7"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="num_il_tl"
+                >Total number of installment accounts</label
+              >
+              <input
+                id="num_il_tl"
+                name="num_il_tl"
+                class="form-control"
+                type="number"
+                value="7"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="num_op_rev_tl"
+                >Number of open revolving accounts</label
+              >
+              <input
+                id="num_op_rev_tl"
+                name="num_op_rev_tl"
+                class="form-control"
+                type="number"
+                value="7"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="num_rev_accts"
+                >Total number of revolving accounts</label
+              >
+              <input
+                id="num_rev_accts"
+                name="num_rev_accts"
+                class="form-control"
+                type="number"
+                value="13"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="num_rev_tl_bal_gt_0"
+                >Number of revolving trades with balance greater than 0</label
+              >
+              <input
+                id="num_rev_tl_bal_gt_0"
+                name="num_rev_tl_bal_gt_0"
+                class="form-control"
+                type="number"
+                value="5"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="num_sats">Number of satisfactory accounts</label>
+              <input
+                id="num_sats"
+                name="num_sats"
+                class="form-control"
+                type="number"
+                value="11"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="num_tl_120dpd_2m"
+                >Number of accounts currently 120 days past due</label
+              >
+              <input
+                id="num_tl_120dpd_2m"
+                name="num_tl_120dpd_2m"
+                class="form-control"
+                type="number"
+                value="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="num_tl_30dpd"
+                >Number of accounts currently 30 days past due</label
+              >
+              <input
+                id="num_tl_30dpd"
+                name="num_tl_30dpd"
+                class="form-control"
+                type="number"
+                value="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="num_tl_90g_dpd_24m"
+                >Number of accounts 90 or more days past due in the past 24
+                months</label
+              >
+              <input
+                id="num_tl_90g_dpd_24m"
+                name="num_tl_90g_dpd_24m"
+                class="form-control"
+                type="number"
+                value="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="num_tl_op_past_12m"
+                >Number of accounts opened in the past 12 months</label
+              >
+              <input
+                id="num_tl_op_past_12m"
+                name="num_tl_op_past_12m"
+                class="form-control"
+                type="number"
+                value="2"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="pct_tl_nvr_dlq"
+                >Percent of trades never delinquent</label
+              >
+              <input
+                id="pct_tl_nvr_dlq"
+                name="pct_tl_nvr_dlq"
+                class="form-control"
+                type="number"
+                step="0.1"
+                value="98.0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="percent_bc_gt_75"
+                >Percentage of all bankcard accounts greater than 75% of
+                limit</label
+              >
+              <input
+                id="percent_bc_gt_75"
+                name="percent_bc_gt_75"
+                class="form-control"
+                type="number"
+                step="0.1"
+                value="42.9"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="pub_rec_bankruptcies"
+                >Number of public record bankruptcies</label
+              >
+              <input
+                id="pub_rec_bankruptcies"
+                name="pub_rec_bankruptcies"
+                class="form-control"
+                type="number"
+                value="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="tax_liens">Number of tax liens</label>
+              <input
+                id="tax_liens"
+                name="tax_liens"
+                class="form-control"
+                type="number"
+                value="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="tot_hi_cred_lim"
+                >Total high credit/credit limit</label
+              >
+              <input
+                id="tot_hi_cred_lim"
+                name="tot_hi_cred_lim"
+                class="form-control"
+                type="number"
+                value="119795"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="total_bal_ex_mort"
+                >Total credit balance excluding mortgage</label
+              >
+              <input
+                id="total_bal_ex_mort"
+                name="total_bal_ex_mort"
+                class="form-control"
+                type="number"
+                value="39476"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="total_bc_limit">Total bankcard credit limit</label>
+              <input
+                id="total_bc_limit"
+                name="total_bc_limit"
+                class="form-control"
+                type="number"
+                value="15600"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="total_il_high_credit_limit"
+                >Total installment high credit/credit limit</label
+              >
+              <input
+                id="total_il_high_credit_limit"
+                name="total_il_high_credit_limit"
+                class="form-control"
+                type="number"
+                value="33955"
+                required
+              />
+            </div>
+
+            <button type="submit" id="submit-button" class="btn btn-primary">
+              GET
+            </button>
+          </form>
+
+          <h5>API output:</h5>
+
+          <div class="card">
+            <pre id="apiOutput" class="hljs bg-white mb-0">&#8203;</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Explanation -->
+      <p class="lead font-italic">
+        View the source on
+        <a href="https://github.com/tywmick/loan-risk-neural-network">GitHub</a
+        >, or just the model's source on
+        <a
+          href="https://www.kaggle.com/tywmick/lendingclub-loan-risk-neural-network"
+          >Kaggle</a
+        >.
+      </p>
+
+      <p>
+        <a href="https://www.lendingclub.com/">LendingClub</a> is the world's
+        largest peer-to-peer lending platform. Until recently (through the end
+        of 2018), LendingClub published a public dataset of all loans issued
+        since the company's launch in 2007.
+      </p>
+      <p>
+        I decided to
+        <a
+          href="https://www.kaggle.com/tywmick/lendingclub-loan-risk-neural-network"
+          >create a neural network</a
+        >
+        with this dataset to predict the fraction of an expected loan return
+        that a prospective borrower will pay back. Now, to share it, I've
+        created this API to serve the model.
+      </p>
+      <p>
+        This API is written in Python with
+        <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a>. I also
+        used <a href="https://www.tensorflow.org/">TensorFlow</a>/<a
+          href="https://keras.io/"
+          >Keras</a
+        >
+        to load and predict with the model I created, and
+        <a href="https://pandas.pydata.org/">pandas</a> and
+        <a href="https://scikit-learn.org/">scikit-learn</a> to manipulate the
+        incoming API data a bit before loading it into the model.
+      </p>
+    </div>
+
+    <!-- Glitch button -->
+    <div
+      class="glitchButton"
+      style="position: absolute; top: 20px; right: 20px;"
+    ></div>
+    <script src="https://button.glitch.me/button.js"></script>
+
+    <!-- prettier-ignore -->
+    <span>
+      <!-- jQuery -->
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <!-- Bootstrap -->
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <!-- highlight.js -->
+      <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    </span>
+
+    <script>
+      $(function () {
+        $("#apiTest").submit(function () {
+          $("button").attr("disabled", true);
+          $("button", this).html(
+            '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Uploading...</span>'
+          );
+          event.preventDefault();
+          $.ajax({
+            url: "/api/predict",
+            type: "get",
+            data: $(this).serialize(),
+            success: function (result) {
+              $("#apiOutput").text(JSON.stringify(result, null, 2));
+              hljs.highlightBlock(document.getElementById("apiOutput"));
+              $("#apiTest button").html("GET");
+              $("button").removeAttr("disabled");
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

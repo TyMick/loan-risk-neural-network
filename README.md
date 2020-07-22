@@ -1,8 +1,6 @@
 # LendingClub Loan Risk Neural Network
 
-<h3 style="font-style: italic; color: #6c757d;">
-  or, Ty Goes Into Far Too Much Detail About Cleaning Data
-</h3>
+### _or, Ty Goes Into Far Too Much Detail About Cleaning Data_
 
 1. **[Introduction](#Introduction)**
 2. **[Data cleaning](#Data-cleaning)**

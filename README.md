@@ -29,7 +29,7 @@ loans.shape
 
 With 2,260,701 loans to look at and 151 potential variables, my goal is to create a neural network model to predict the fraction of an expected loan return that a prospective borrower will pay back. Afterward, I'll create a public API to serve that model.
 
-Also, as you may have guessed from the preceding code block, this post is adapted from a Jupyter Notebook. If you'd like to follow along in your own notebook, go ahead and fork mine on [Kaggle](https://www.kaggle.com/tywmick/building-a-neural-network-to-predict-loan-risk "Building a Neural Network to Predict Loan Risk | Kaggle") or [GitHub]()
+Also, as you may have guessed from the preceding code block, this post is adapted from a Jupyter Notebook. If you'd like to follow along in your own notebook, go ahead and fork mine on [Kaggle](https://www.kaggle.com/tywmick/building-a-neural-network-to-predict-loan-risk "Building a Neural Network to Predict Loan Risk | Kaggle") or [GitHub](https://github.com/tywmick/loan-risk-neural-network/blob/master/models/loan-risk-neural-network.ipynb "loan-risk-neural-network/loan-risk-neural-network.ipynb at master · tywmick/loan-risk-neural-network").
 
 <h2 id="data-cleaning">Data cleaning</h2>
 

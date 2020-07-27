@@ -1,8 +1,6 @@
 # LendingClub Loan Risk Neural Network
 
-<h3 style="font-style: italic; color: #6c757d;">
-  or, Ty Goes Into Far Too Much Detail About Cleaning Data
-</h3>
+### _or, Ty Goes Into Far Too Much Detail About Cleaning Data_
 
 1. **[Introduction](#introduction)**
 2. **[Data cleaning](#data-cleaning)**
@@ -434,13 +432,13 @@ loans.groupby("loan_status")["fraction_recovered"].describe()
   <style scoped>
     .dataframe tbody tr th:only-of-type {
       vertical-align: middle;
-  }
+    }
     .dataframe tbody tr th {
       vertical-align: top;
-  }
+    }
     .dataframe thead th {
       text-align: right;
-  }
+    }
   </style>
   <table border="1" class="dataframe">
     <thead>

@@ -1,4 +1,4 @@
-# LendingClub Loan Risk Neural Network
+# Building a Neural Network to Predict Loan Risk
 
 ### _or, Ty Goes Into Far Too Much Detail About Cleaning Data_
 

@@ -30,12 +30,29 @@
       <!-- API test front end -->
       <div class="card mb-4">
         <div class="card-body">
-          <div class="h5">
-            Test this API:
-          </div>
-          <div class="h6 mb-3 text-muted">
-            (Prefilled with median numeric values and most common categorical
-            values)
+          <div class="h5">Test this API:</div>
+          <div class="input-group mx-auto mb-3" style="max-width: max-content;">
+            <div class="input-group-prepend" style="margin-right: 0;">
+              <span id="fill-form-with" class="input-group-text"
+                >Fill form with a typical</span
+              >
+            </div>
+            <div class="input-group-append">
+              <button
+                id="fully-paid-fill"
+                class="btn btn-outline-primary"
+                aria-labelledby="fill-form-with"
+              >
+                fully paid loan
+              </button>
+              <button
+                id="charged-off-fill"
+                class="btn btn-outline-primary"
+                aria-labelledby="fill-form-with"
+              >
+                charged-off loan
+              </button>
+            </div>
           </div>
 
           <form id="apiTest" class="mb-4">
@@ -46,7 +63,6 @@
                 name="loan_amnt"
                 class="form-control"
                 type="number"
-                value="12800"
                 required
               />
             </div>
@@ -54,7 +70,7 @@
             <div class="form-group">
               <label for="term">Term</label>
               <select id="term" name="term" class="form-control" required>
-                <option selected>36 months</option>
+                <option>36 months</option>
                 <option>60 months</option>
               </select>
             </div>
@@ -77,7 +93,7 @@
                 <option>7 years</option>
                 <option>8 years</option>
                 <option>9 years</option>
-                <option selected>10+ years</option>
+                <option>10+ years</option>
               </select>
             </div>
 
@@ -89,7 +105,7 @@
                 class="form-control"
               >
                 <option value="RENT">Rent</option>
-                <option value="MORTGAGE" selected>Mortgage</option>
+                <option value="MORTGAGE">Mortgage</option>
                 <option value="OWN">Own</option>
                 <option value="ANY">Any</option>
                 <option value="NONE">None</option>
@@ -104,7 +120,6 @@
                 name="annual_inc"
                 class="form-control"
                 type="number"
-                value="67000"
                 required
               />
             </div>
@@ -139,7 +154,6 @@
                 class="form-control"
                 type="number"
                 step="0.1"
-                value="17.9"
                 required
               />
             </div>
@@ -153,7 +167,6 @@
                 name="delinq_2yrs"
                 class="form-control"
                 type="number"
-                value="0"
                 required
               />
             </div>
@@ -167,7 +180,6 @@
                 name="cr_hist_age_mths"
                 class="form-control"
                 type="number"
-                value="176"
                 required
               />
             </div>
@@ -179,7 +191,6 @@
                 name="fico_range_low"
                 class="form-control"
                 type="number"
-                value="690"
                 required
               />
             </div>
@@ -191,7 +202,6 @@
                 name="fico_range_high"
                 class="form-control"
                 type="number"
-                value="694"
                 required
               />
             </div>
@@ -205,7 +215,6 @@
                 name="inq_last_6mths"
                 class="form-control"
                 type="number"
-                value="0"
                 required
               />
             </div>
@@ -219,7 +228,6 @@
                 name="inv_mths_since_last_delinq"
                 class="form-control"
                 type="text"
-                value="78"
                 aria-describedby="inv_mths_since_last_delinq_help"
                 required
               />
@@ -240,7 +248,6 @@
                 name="inv_mths_since_last_record"
                 class="form-control"
                 type="text"
-                value="N/A"
                 aria-describedby="inv_mths_since_last_record_help"
                 required
               />
@@ -259,7 +266,6 @@
                 name="open_acc"
                 class="form-control"
                 type="number"
-                value="11"
                 required
               />
             </div>
@@ -271,7 +277,6 @@
                 name="pub_rec"
                 class="form-control"
                 type="number"
-                value="0"
                 required
               />
             </div>
@@ -285,7 +290,6 @@
                 name="revol_bal"
                 class="form-control"
                 type="number"
-                value="11484"
                 required
               />
             </div>
@@ -298,7 +302,6 @@
                 class="form-control"
                 type="number"
                 step="0.1"
-                value="52.1"
                 required
               />
             </div>
@@ -312,7 +315,6 @@
                 name="total_acc"
                 class="form-control"
                 type="number"
-                value="24"
                 required
               />
             </div>
@@ -327,7 +329,6 @@
                 name="collections_12_mths_ex_med"
                 class="form-control"
                 type="number"
-                value="0"
                 required
               />
             </div>
@@ -341,7 +342,6 @@
                 name="inv_mths_since_last_major_derog"
                 class="form-control"
                 type="text"
-                value="N/A"
                 aria-describedby="inv_mths_since_last_major_derog_help"
                 required
               />
@@ -361,7 +361,7 @@
                 class="form-control"
                 required
               >
-                <option selected>Individual</option>
+                <option>Individual</option>
                 <option>Joint App</option>
               </select>
             </div>
@@ -375,7 +375,6 @@
                 name="annual_inc_joint"
                 class="form-control"
                 type="text"
-                value="N/A"
                 aria-describedby="annual_inc_joint_help"
                 required
               />
@@ -393,7 +392,6 @@
                 name="dti_joint"
                 class="form-control"
                 type="text"
-                value="N/A"
                 aria-describedby="dti_joint_help"
                 required
               />
@@ -411,7 +409,6 @@
                 name="acc_now_delinq"
                 class="form-control"
                 type="number"
-                value="0"
                 required
               />
             </div>
@@ -425,7 +422,6 @@
                 name="tot_coll_amt"
                 class="form-control"
                 type="number"
-                value="0"
                 required
               />
             </div>
@@ -439,7 +435,6 @@
                 name="tot_cur_bal"
                 class="form-control"
                 type="number"
-                value="87095"
                 required
               />
             </div>
@@ -451,7 +446,6 @@
                 name="total_rev_hi_lim"
                 class="form-control"
                 type="number"
-                value="24600"
                 required
               />
             </div>
@@ -465,7 +459,6 @@
                 name="acc_open_past_24mths"
                 class="form-control"
                 type="number"
-                value="4"
                 required
               />
             </div>
@@ -479,7 +472,6 @@
                 name="avg_cur_bal"
                 class="form-control"
                 type="number"
-                value="7824"
                 required
               />
             </div>
@@ -491,7 +483,6 @@
                 name="bc_open_to_buy"
                 class="form-control"
                 type="number"
-                value="4878"
                 required
               />
             </div>
@@ -504,7 +495,6 @@
                 class="form-control"
                 type="number"
                 step="0.1"
-                value="63.0"
                 required
               />
             </div>
@@ -518,7 +508,6 @@
                 name="chargeoff_within_12_mths"
                 class="form-control"
                 type="number"
-                value="0"
                 required
               />
             </div>
@@ -532,7 +521,6 @@
                 name="delinq_amnt"
                 class="form-control"
                 type="number"
-                value="0"
                 required
               />
             </div>
@@ -546,7 +534,6 @@
                 name="mo_sin_old_il_acct"
                 class="form-control"
                 type="number"
-                value="129"
                 required
               />
             </div>
@@ -560,7 +547,6 @@
                 name="mo_sin_old_rev_tl_op"
                 class="form-control"
                 type="number"
-                value="161"
                 required
               />
             </div>
@@ -574,7 +560,6 @@
                 name="inv_mo_sin_rcnt_rev_tl_op"
                 class="form-control"
                 type="text"
-                value="8"
                 aria-describedby="inv_mo_sin_rcnt_rev_tl_op_help"
                 required
               />
@@ -595,7 +580,6 @@
                 name="inv_mo_sin_rcnt_tl"
                 class="form-control"
                 type="text"
-                value="5"
                 aria-describedby="inv_mo_sin_rcnt_tl_help"
                 required
               />
@@ -611,7 +595,6 @@
                 name="mort_acc"
                 class="form-control"
                 type="number"
-                value="1"
                 required
               />
             </div>
@@ -625,7 +608,6 @@
                 name="inv_mths_since_recent_bc"
                 class="form-control"
                 type="text"
-                value="14"
                 aria-describedby="inv_mths_since_recent_bc_help"
                 required
               />
@@ -646,7 +628,6 @@
                 name="inv_mths_since_recent_bc_dlq"
                 class="form-control"
                 type="text"
-                value="N/A"
                 aria-describedby="inv_mths_since_recent_bc_dlq_help"
                 required
               />
@@ -667,7 +648,6 @@
                 name="inv_mths_since_recent_inq"
                 class="form-control"
                 type="text"
-                value="6"
                 aria-describedby="inv_mths_since_recent_inq_help"
                 required
               />
@@ -688,7 +668,6 @@
                 name="inv_mths_since_recent_revol_delinq"
                 class="form-control"
                 type="text"
-                value="N/A"
                 aria-describedby="inv_mths_since_recent_revol_delinq_help"
                 required
               />
@@ -709,7 +688,6 @@
                 name="num_accts_ever_120_pd"
                 class="form-control"
                 type="number"
-                value="0"
                 required
               />
             </div>
@@ -723,7 +701,6 @@
                 name="num_actv_bc_tl"
                 class="form-control"
                 type="number"
-                value="3"
                 required
               />
             </div>
@@ -737,7 +714,6 @@
                 name="num_actv_rev_tl"
                 class="form-control"
                 type="number"
-                value="5"
                 required
               />
             </div>
@@ -751,7 +727,6 @@
                 name="num_bc_sats"
                 class="form-control"
                 type="number"
-                value="4"
                 required
               />
             </div>
@@ -763,7 +738,6 @@
                 name="num_bc_tl"
                 class="form-control"
                 type="number"
-                value="7"
                 required
               />
             </div>
@@ -777,7 +751,6 @@
                 name="num_il_tl"
                 class="form-control"
                 type="number"
-                value="7"
                 required
               />
             </div>
@@ -791,7 +764,6 @@
                 name="num_op_rev_tl"
                 class="form-control"
                 type="number"
-                value="7"
                 required
               />
             </div>
@@ -805,7 +777,6 @@
                 name="num_rev_accts"
                 class="form-control"
                 type="number"
-                value="13"
                 required
               />
             </div>
@@ -819,7 +790,6 @@
                 name="num_rev_tl_bal_gt_0"
                 class="form-control"
                 type="number"
-                value="5"
                 required
               />
             </div>
@@ -831,7 +801,6 @@
                 name="num_sats"
                 class="form-control"
                 type="number"
-                value="11"
                 required
               />
             </div>
@@ -845,7 +814,6 @@
                 name="num_tl_120dpd_2m"
                 class="form-control"
                 type="number"
-                value="0"
                 required
               />
             </div>
@@ -859,7 +827,6 @@
                 name="num_tl_30dpd"
                 class="form-control"
                 type="number"
-                value="0"
                 required
               />
             </div>
@@ -874,7 +841,6 @@
                 name="num_tl_90g_dpd_24m"
                 class="form-control"
                 type="number"
-                value="0"
                 required
               />
             </div>
@@ -888,7 +854,6 @@
                 name="num_tl_op_past_12m"
                 class="form-control"
                 type="number"
-                value="2"
                 required
               />
             </div>
@@ -903,7 +868,6 @@
                 class="form-control"
                 type="number"
                 step="0.1"
-                value="98.0"
                 required
               />
             </div>
@@ -919,7 +883,6 @@
                 class="form-control"
                 type="number"
                 step="0.1"
-                value="42.9"
                 required
               />
             </div>
@@ -933,7 +896,6 @@
                 name="pub_rec_bankruptcies"
                 class="form-control"
                 type="number"
-                value="0"
                 required
               />
             </div>
@@ -945,7 +907,6 @@
                 name="tax_liens"
                 class="form-control"
                 type="number"
-                value="0"
                 required
               />
             </div>
@@ -959,7 +920,6 @@
                 name="tot_hi_cred_lim"
                 class="form-control"
                 type="number"
-                value="119795"
                 required
               />
             </div>
@@ -973,7 +933,6 @@
                 name="total_bal_ex_mort"
                 class="form-control"
                 type="number"
-                value="39476"
                 required
               />
             </div>
@@ -985,7 +944,6 @@
                 name="total_bc_limit"
                 class="form-control"
                 type="number"
-                value="15600"
                 required
               />
             </div>
@@ -999,7 +957,6 @@
                 name="total_il_high_credit_limit"
                 class="form-control"
                 type="number"
-                value="33955"
                 required
               />
             </div>
@@ -1105,35 +1062,10 @@
 
     <!-- prettier-ignore -->
     <span>
-      <!-- jQuery -->
       <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-      <!-- Bootstrap -->
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-      <!-- highlight.js -->
       <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+      <script src="{{url_for('static', filename='main.js')}}"></script>
     </span>
-
-    <script>
-      $(function () {
-        $("#apiTest").submit(function () {
-          $("button").attr("disabled", true);
-          $("button", this).html(
-            '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Uploading...</span>'
-          );
-          event.preventDefault();
-          $.ajax({
-            url: "/api/predict",
-            type: "get",
-            data: $(this).serialize(),
-            success: function (result) {
-              $("#apiOutput").text(JSON.stringify(result, null, 2));
-              hljs.highlightBlock(document.getElementById("apiOutput"));
-              $("#apiTest button").html("GET");
-              $("button").removeAttr("disabled");
-            },
-          });
-        });
-      });
-    </script>
   </body>
 </html>

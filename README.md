@@ -484,7 +484,7 @@ plt.title('Distribution of "fraction recovered"')
 plt.show()
 ```
 
-![png](images/loan-risk-neural-network_25_0.png)
+![A KDE (kernel density estimation) plot depicting the distribution of "fraction recovered" amounts among charged-off loans. It looks like a smoothed out triangular distribution, starting close to 0 density at 0.0 fraction recovered, peaking around 0.25 fraction recovered, and gradually falling back near 0 density at 1.0 fraction recovered.](images/loan-risk-neural-network_25_0.png)
 
 Now that the output is formatted, it's time to clean up the inputs. I'll check the null counts of each variable.
 
@@ -2155,7 +2155,7 @@ plt.title("Model 1 loss metrics during training")
 plt.show()
 ```
 
-![png](images/loan-risk-neural-network_77_0.png)
+![A line plot depicting the changes in training loss and validation loss metrics over the 68 epochs of training. Training loss falls smoothly as expected, and validation loss follows fairly closely, but with a more jagged line. Validation loss is lowest at 48 epochs, after which its line hovers slightly above that of the training loss, and thus one can assume that the validation loss would continue to diverge after that point, in which case the model would be overfitting the training data.](images/loan-risk-neural-network_77_0.png)
 
 <h2 id="saving-the-final-model">Saving the final model</h2>
 

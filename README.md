@@ -347,20 +347,6 @@ loans.groupby("loan_status")["fraction_recovered"].describe()
 ```
 
 <div class="data-table">
-  <style scoped>
-    .dataframe tbody tr th:only-of-type {
-      vertical-align: middle;
-    }
-    .dataframe tbody tr th {
-      vertical-align: top;
-    }
-    .dataframe thead th {
-      text-align: right;
-    }
-    .dataframe tbody tr td {
-      text-align: right;
-    }
-  </style>
   <table border="1" class="dataframe">
     <thead>
       <tr style="text-align: right;">
@@ -429,17 +415,6 @@ loans.groupby("loan_status")["fraction_recovered"].describe()
 ```
 
 <div class="data-table">
-  <style scoped>
-    .dataframe tbody tr th:only-of-type {
-      vertical-align: middle;
-    }
-    .dataframe tbody tr th {
-      vertical-align: top;
-    }
-    .dataframe thead th {
-      text-align: right;
-    }
-  </style>
   <table border="1" class="dataframe">
     <thead>
       <tr style="text-align: right;">
@@ -961,17 +936,6 @@ loans[["earliest_cr_line", "sec_app_earliest_cr_line"]]
 ```
 
 <div class="data-table">
-  <style scoped>
-    .dataframe tbody tr th:only-of-type {
-      vertical-align: middle;
-    }
-    .dataframe tbody tr th {
-      vertical-align: top;
-    }
-    .dataframe thead th {
-      text-align: right;
-    }
-  </style>
   <table border="1" class="dataframe">
     <thead>
       <tr style="text-align: right;">
@@ -1324,17 +1288,6 @@ query_df[["il_util", "il_util_compute"]]
 ```
 
 <div class="data-table">
-  <style scoped>
-    .dataframe tbody tr th:only-of-type {
-      vertical-align: middle;
-    }
-    .dataframe tbody tr th {
-      vertical-align: top;
-    }
-    .dataframe thead th {
-      text-align: right;
-    }
-  </style>
   <table border="1" class="dataframe">
     <thead>
       <tr style="text-align: right;">

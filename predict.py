@@ -1,6 +1,6 @@
+import pandas as pd
 import joblib
 from tensorflow.keras.models import load_model
-import pandas as pd
 import numpy as np
 
 

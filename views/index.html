@@ -991,6 +991,7 @@
         of 2018), LendingClub published a public dataset of all loans issued
         since the company's launch in 2007.
       </p>
+
       <p>
         I decided to
         <a
@@ -999,8 +1000,13 @@
         >
         with this dataset to predict the fraction of an expected loan return
         that a prospective borrower will pay back. Now, to share it, I've
-        created this API to serve the model.
+        created this API to serve the model. If you'd like to interface with
+        this API directly (rather than using the above web form), send a GET
+        request to
+        <code>https://tywmick.pythonanywhere.com/api/predict</code> (just make
+        sure to include every parameter in your query string).
       </p>
+
       <p>
         This API is written in Python with
         <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a>. I also
@@ -1013,6 +1019,7 @@
         <a href="https://scikit-learn.org/">scikit-learn</a> to manipulate the
         incoming API data a bit before loading it into the model.
       </p>
+
       <p>
         Please enjoy, and <a href="https://tymick.me/connect">let me know</a> if
         you have any questions!

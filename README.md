@@ -1631,7 +1631,6 @@ from sklearn_pandas import DataFrameMapper
 from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler
 from tensorflow.keras import Sequential, Input
 from tensorflow.keras.layers import Dense, Dropout
-from math import floor
 
 
 def run_pipeline(

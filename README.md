@@ -315,7 +315,7 @@ term
 Name: term, dtype: int64
 ```
 
-Ah, so `term` is a categorical feature with two options. I'll treate it as such when I use it as an input to the model, but to calculate the ouput variable I'll create a numerical column from it.
+Ah, so `term` is a categorical feature with two options. I'll treat it as such when I use it as an input to the model, but to calculate the output variable I'll create a numerical column from it.
 
 Also, I need to trim the whitespace from the beginning of those values—that's no good.
 
@@ -1621,7 +1621,7 @@ Phew, the data's all clean now! Time for the fun part.
 
 <h2 id="building-the-neural-networks">Building the neural networks</h2>
 
-After a good deal of trial and error, I found that a network architecture with three hidden layers, each followed by a dropout layer of rate 0.3, was as good as I could find. I used ReLU activation in those hidden layers, and adam optimization and a loss metric of mean squared error in the model as a whole. I tried using mean absolute error at first, but then I found that the resulting model would essentially always guess either 1 or 0 for the output, and the majority of the dataset's ouput is 1. Therefore, larger errors needed to be penalized to a greater degree, which is what mean squared error is good at.
+After a good deal of trial and error, I found that a network architecture with three hidden layers, each followed by a dropout layer of rate 0.3, was as good as I could find. I used ReLU activation in those hidden layers, and adam optimization and a loss metric of mean squared error in the model as a whole. I tried using mean absolute error at first, but then I found that the resulting model would essentially always guess either 1 or 0 for the output, and the majority of the dataset's output is 1. Therefore, larger errors needed to be penalized to a greater degree, which is what mean squared error is good at.
 
 The dataset being so large, I had great results increasing the batch size for the first couple models.
 

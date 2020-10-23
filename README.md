@@ -6,4 +6,9 @@ I wrote an article detailing my entire process, which you can read on [my blog](
 
 After building the model itself, I built an API to serve its predictions, using [Flask](https://flask.palletsprojects.com/en/1.1.x/), [TensorFlow](https://www.tensorflow.org/)/[Keras](https://keras.io/), [pandas](https://pandas.pydata.org/), and [scikit-learn](https://scikit-learn.org/). You can interact with the API by either visiting its [demonstrational front end](https://tywmick.pythonanywhere.com/) or sending a GET request directly to `https://tywmick.pythonanywhere.com/api/predict`. The front end site includes a form where you can fill in all the parameters for the API request, and there are a couple of buttons at the top that let you fill the form with typical examples from the dataset (since there are a _lot_ of fields to fill in).
 
+I later wrote a couple of follow-up posts expanding the project:
+
+- [Can I Grade Loans Better Than LendingClub?](https://tymick.me/blog/loan-grading-showdown)
+- [Natural Language Processing for Loan Risk](https://tymick.me/blog/loan-risk-nlp)
+
 Please enjoy, and [let me know](https://tymick.me/connect) if you have any questions!
